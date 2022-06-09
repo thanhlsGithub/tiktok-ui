@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -10,6 +11,7 @@ import Menu from '~/components/Popper/Menu';
 import { UploadIcon, MessageIcon, InboxIcon, } from '~/components/icons';
 import Image from '~/components/image';
 import Search from '~/components/Layout/Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles)
 
@@ -96,9 +98,10 @@ function Header() {
     ];
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
-            <div className={cx('logo')}>
+
+            <Link to={routesConfig.home} className={cx('logo')}>
                 <img src={images.logo} alt="logo" />
-            </div>
+            </Link>
 
             <Search />
 
