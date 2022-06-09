@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import * as searchServices from '~/apiServices/searchServices';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
@@ -26,18 +27,21 @@ function Search() {
             setSearchResult([])
             return;
         }
-        setLoading(true)
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(deBounced)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data)
-                setLoading(false)
-            })
-            .catch(() => {
-                // TODO document why this arrow function is empty
+        const fetchApi = async () => {
 
-            })
+            setLoading(true);
+
+            const results = await searchServices.search(deBounced);
+            setSearchResult(results);
+
+            setLoading(false);
+
+        }
+
+
+
+        fetchApi();
 
     }, [deBounced])
 
