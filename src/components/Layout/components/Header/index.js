@@ -38,7 +38,8 @@ const MENU_ITEMS = [
                     title: 'Vietnamese',
                     type: 'language',
 
-                }
+                },
+
 
             ],
         },
