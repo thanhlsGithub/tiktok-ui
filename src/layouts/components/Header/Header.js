@@ -10,10 +10,10 @@ import { faEllipsisVertical, faEarthAsia, faCircleQuestion, faKeyboard, faUser, 
 import Menu from '~/components/Popper/Menu';
 import { UploadIcon, MessageIcon, InboxIcon, } from '~/components/icons';
 import Image from '~/components/image';
-import Search from '~/components/Layout/Search';
-import routesConfig from '~/config/routes';
+import Search from '~/layouts/Search';
+import config from '~/config/';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles) 
 
 const MENU_ITEMS = [
     {
@@ -100,7 +100,7 @@ function Header() {
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
 
-            <Link to={routesConfig.home} className={cx('logo')}>
+            <Link to={config.routes.home} className={cx('logo')}>
                 <img src={images.logo} alt="logo" />
             </Link>
 
